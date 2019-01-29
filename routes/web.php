@@ -1,16 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use Illuminate\Http\Request;
 
 //function() e funcao anonima, executada quando chamada a rota
 //get e funcao estatica de Route
@@ -146,4 +136,11 @@ Route::patch('/rest/hello', function (){
 Route::options('/rest/hello', function (){
 
     return "Hello (OPTIONS)";
+});
+
+//passar parametro, formulario
+Route::post('/rest/imprimir', function (Request $req){
+    $nome = $req->input('nome');
+    $idade = $req->input('idade');
+    return "Hello $nome ($idade)! (POST)";
 });
