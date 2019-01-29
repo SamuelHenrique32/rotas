@@ -117,3 +117,33 @@ Route::get('/hellonome/{nome}/{sobrenome}', function ($nome, $sn){
     return view('hellonome',
         ['nome'=>$nome, 'sobrenome'=>$sn]);
 });
+
+Route::get('/rest/hello', function (){
+
+    return "Hello (GET)";
+});
+
+Route::post('/rest/hello', function (){
+
+    return "Hello (POST)";
+});
+
+Route::delete('/rest/hello', function (){
+
+    return "Hello (DELETE)";
+});
+
+Route::put('/rest/hello', function (){
+
+    return "Hello (PUT)";
+});
+
+Route::patch('/rest/hello', function (){
+
+    return "Hello (PATCH)";
+});
+
+Route::options('/rest/hello', function (){
+
+    return "Hello (OPTIONS)";
+});
