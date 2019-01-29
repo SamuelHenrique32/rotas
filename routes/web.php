@@ -144,3 +144,13 @@ Route::post('/rest/imprimir', function (Request $req){
     $idade = $req->input('idade');
     return "Hello $nome ($idade)! (POST)";
 });
+
+//agrupar varios metodos a serem atendidos por mesma funcao anonima
+Route::match(['get','post'],'/rest/hello2', function (){
+   return "Hello World 2";
+});
+
+//atende qualquer metodo
+Route::any('/rest/hello3', function (){
+    return "Hello World 3";
+});
