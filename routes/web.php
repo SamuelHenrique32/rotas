@@ -52,3 +52,25 @@ Route::get('/repetir/{nome}/{n}', function ($nome, $n) {
         echo "Voce nao digitou um inteiro!";
     }
 });
+
+Route::get('/seunomecomregra/{nome}/{n}', function ($nome, $n) {
+
+    //n recebe somente 0 a 9 (nao e intervalo mas sim digitos possiveis)
+    for($i=0 ; $i<$n ; $i++){
+        echo "<h1>Ola, $nome! ($i) </h1>";
+    }
+//+ para poder ter mais que um digito
+//expressao regular
+//nome aceita apenas caracteres de 'a' a 'z' minusculo ou maiusculo
+})->where('n','[0-9]+')->where('nome','[A-Za-z]+');
+
+//restringindo menos, parametro nome e opcional
+//padrao e null
+Route::get('/seunomesemregra/{nome?}', function ($nome=null) {
+
+    if(isset($nome)){
+        echo "<h1>Ola, $nome!</h1>";
+    } else{
+        echo "Voce nao passou nenhum nome!";
+    }
+});
