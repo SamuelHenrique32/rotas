@@ -91,3 +91,29 @@ Route::prefix('app')->group(function (){
         return "Meu about";
     });
 });
+
+//redirecionamento, /aqui vai para /ola
+//301 e codigo de retorno do http, foi permanentemente movido para outra rota
+//funcionou apenas pelo php artisan serve
+Route::redirect('/aqui', '/ola', 301);
+
+//redirecionar para views
+/*Route::get('/hello', function () {
+    return view('hello');
+});*/
+
+Route::view('/hello', 'hello');
+
+//passando parametros
+//rota, view
+//array associativo
+Route::view('/viewnome', 'hellonome',
+    ['nome'=>'Joao',
+    'sobrenome'=>'Silva']);
+
+//parametros da url
+Route::get('/hellonome/{nome}/{sobrenome}', function ($nome, $sn){
+
+    return view('hellonome',
+        ['nome'=>$nome, 'sobrenome'=>$sn]);
+});
