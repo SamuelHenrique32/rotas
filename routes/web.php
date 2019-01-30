@@ -154,3 +154,28 @@ Route::match(['get','post'],'/rest/hello2', function (){
 Route::any('/rest/hello3', function (){
     return "Hello World 3";
 });
+
+//nomeando rota
+Route::get('/produtos', function(){
+
+    echo "<h1>Produtos</h1>";
+    echo "<ol>";
+    echo "<li>Notebook</li>";
+    echo "<li>Impressora</li>";
+    echo "<li>Mouse</li>";
+    echo "</ol>";
+})->name('meusprodutos');
+
+//redireciona para rota anterior, permite alterar url da rota anterior e continua
+//funcionando
+Route::get('/linkprodutos', function (){
+
+    $url = route('meusprodutos');
+    // \ para escapar aspas
+    echo "<a href=\"". $url ."\">Meus Produtos</a>";
+});
+
+Route::get('/redirecionarprodutos', function (){
+
+    return redirect()->route('meusprodutos');
+});
